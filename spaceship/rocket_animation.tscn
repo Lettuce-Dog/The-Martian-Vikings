@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://b27ln4qnxedkf"]
+
+[ext_resource type="Texture2D" uid="uid://rqm1w1c5xokx" path="res://Space_Explorers_Pixel_Pack/rocket/rocket_landed_spritesheet.png" id="1_svbbx"]
+[ext_resource type="Texture2D" uid="uid://dofse8hlh5omq" path="res://Space_Explorers_Pixel_Pack/props/landing_pad.png" id="1_w4mkh"]
+[ext_resource type="Script" uid="uid://c64d78i5olb4x" path="res://rocket_script.gd" id="2_nbtp4"]
+[ext_resource type="Texture2D" uid="uid://doh82o5bv6kns" path="res://Space_Explorers_Pixel_Pack/rocket/rocket_launch_spritesheet.png" id="2_w4mkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfjwa"]
+size = Vector2(1152.25, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbtp4"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(0, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy4da"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(192, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq48u"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(384, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfiop"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(576, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_865bj"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(768, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqt1u"]
+atlas = ExtResource("1_svbbx")
+region = Rect2(960, 0, 192, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgf50"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(0, 0, 192, 453)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0dpt"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(192, 0, 192, 453)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp1si"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(384, 0, 192, 453)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwtmf"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(576, 0, 192, 453)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdt35"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(768, 0, 192, 453)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xnla"]
+atlas = ExtResource("2_w4mkh")
+region = Rect2(960, 0, 192, 453)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfjwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbtp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy4da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq48u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfiop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_865bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqt1u")
+}],
+"loop": 0,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgf50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0dpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp1si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwtmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdt35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xnla")
+}],
+"loop": 1,
+"name": &"takeoff",
+"speed": 5.0
+}]
+
+[node name="Rocket Animation" type="Node2D" unique_id=2121349883]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1654305185]
+position = Vector2(576, 324)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1059989524]
+
+[node name="LandingPad" type="Sprite2D" parent="Ground" unique_id=910495741]
+position = Vector2(939, 528)
+scale = Vector2(1.078125, 1.125)
+texture = ExtResource("1_w4mkh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1151105086]
+position = Vector2(576.875, 612)
+shape = SubResource("RectangleShape2D_gfjwa")
+
+[node name="StartingPoint" type="Marker2D" parent="." unique_id=489853262]
+position = Vector2(916, -177)
+
+[node name="LandingPoint" type="Marker2D" parent="." unique_id=715291153]
+position = Vector2(937, 435)
+
+[node name="TakeoffPoint" type="Marker2D" parent="." unique_id=2025237319]
+position = Vector2(914, -177)
+
+[node name="Rocket" type="Node2D" parent="." unique_id=416815952 node_paths=PackedStringArray("start_point", "landing_point", "takeoff_point")]
+position = Vector2(-1, 2)
+script = ExtResource("2_nbtp4")
+start_point = NodePath("../StartingPoint")
+landing_point = NodePath("../LandingPoint")
+takeoff_point = NodePath("../TakeoffPoint")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rocket" unique_id=1958686454]
+scale = Vector2(0.7, 0.744)
+sprite_frames = SubResource("SpriteFrames_gfjwa")
+animation = &"landing"
