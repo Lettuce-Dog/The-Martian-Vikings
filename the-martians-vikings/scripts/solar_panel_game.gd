@@ -28,6 +28,8 @@ var dusty_pixels: int
 var last_pixel := Vector2(-1, -1)
 var finished := false
 
+var dir2 := Vector2.ZERO
+var game: Node  # set by game.gd before add_child
 
 func _ready() -> void:
 	_build_scene()
@@ -117,9 +119,15 @@ func _process(delta: float) -> void:
 			_reset_dust()
 		return
 
+# in _process, replacing line 121:
+	if game:
+		game._read_serial()
+		dir2 = Vector2(game.serial_x, -1*game.serial_y)
+
 	# Joystick input (ui_* actions are mapped to the left stick + D-pad by default)
 	var dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	cursor.position += dir * cursor_speed * delta
+	cursor.position += dir2 * cursor_speed * delta
 
 	# Keep the cursor inside the panel
 	var half := panel_texture.get_size() / 2.0 if panel_texture else Vector2(200, 200)
@@ -131,7 +139,7 @@ func _process(delta: float) -> void:
 	if last_pixel.x < 0:
 		last_pixel = pixel
 
-	var moving := dir.length() > 0.1
+	var moving := (dir + dir2).length() > 0.1
 	particles.position = cursor.position
 	particles.emitting = moving and dusty_pixels > 0
 
