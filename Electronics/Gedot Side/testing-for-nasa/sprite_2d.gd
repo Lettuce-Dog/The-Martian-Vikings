@@ -17,7 +17,7 @@ func _ready() -> void:
 		var name_cutoff = name.rfind(" ")
 		if name_cutoff != -1:
 			name = name.substr(0, name_cutoff)
-		if name == "Arduino LLC (www.arduino.cc) Arduino Uno":
+		if name == ("Arduino LLC (www.arduino.cc) Arduino Uno") || ("Arduino (www.arduino.cc)"):
 			port_name = ports[port]["port_name"]
 			print("Arduino Port Found!")
 	
