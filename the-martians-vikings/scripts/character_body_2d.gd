@@ -10,6 +10,7 @@ var serial_x := 0.0  # Last horizontal value received from the Arduino
 
 func _ready() -> void:
 	print("WIRK") # LEAVE IN
+	add_to_group("player")
 	serial = GdSerial.new()
 	var ports = serial.list_ports()
 	print("Available ports: ", ports)

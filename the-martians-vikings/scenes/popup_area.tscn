@@ -1,0 +1,53 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://dq41o52lygkrx" path="res://scripts/popup_area.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(128, 128)
+
+[node name="PopupArea" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Popup" type="Node2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(0, -80)
+
+[node name="Panel" type="PanelContainer" parent="Popup"]
+custom_minimum_size = Vector2(360, 0)
+offset_left = -180.0
+offset_right = 180.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="Popup/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Popup/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Popup/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Notice"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="Popup/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You entered the area."
+autowrap_mode = 3
+
+[node name="Options" type="VBoxContainer" parent="Popup/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
