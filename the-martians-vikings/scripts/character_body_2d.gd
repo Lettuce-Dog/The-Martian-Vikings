@@ -9,6 +9,7 @@ var port_name := ""
 var serial_x := 0.0  # Last horizontal value received from the Arduino
 
 func _ready() -> void:
+	print("WIRK") # LEAVE IN
 	serial = GdSerial.new()
 	var ports = serial.list_ports()
 	print("Available ports: ", ports)
