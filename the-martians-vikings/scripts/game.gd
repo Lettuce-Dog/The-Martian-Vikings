@@ -18,6 +18,7 @@ func _ready() -> void:
 	print(wind_speeds)
 	print(temperatures)
 	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

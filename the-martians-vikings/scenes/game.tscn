@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cuanlbxhpddue"]
 
-[ext_resource type="Script" uid="uid://b8x6l31lhcky8" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://b8x6l31lhcky8" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://gqwy6qat7oah" path="res://assets/bj8sWU (1).png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://c46qgjw0iujq0" path="res://assets/bunker building.png" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://w83gl3j2ictd" path="res://scenes/player.tscn" id="4_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("3_lnu2h")
@@ -13,7 +14,7 @@ texture = ExtResource("3_lnu2h")
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [node name="Game" type="Node2D" unique_id=2026041842]
-script = ExtResource("1_uwrxv")
+script = ExtResource("1_lbhrr")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=869142717]
 position = Vector2(577.125, 373.00003)
@@ -28,3 +29,7 @@ texture = ExtResource("3_lnu2h")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2096196878]
 tile_map_data = PackedByteArray(0, 0, 55, 0, 39, 0, 0, 0, 16, 0, 21, 0, 0, 0, 69, 0, 39, 0, 0, 0, 16, 0, 21, 0, 0, 0, 34, 0, 39, 0, 0, 0, 16, 0, 21, 0, 0, 0, 14, 0, 39, 0, 0, 0, 16, 0, 21, 0, 0, 0, 4, 0, 39, 0, 0, 0, 16, 0, 21, 0, 0, 0)
 tile_set = SubResource("TileSet_aidhf")
+
+[node name="Player" parent="." unique_id=924541728 instance=ExtResource("4_iywne")]
+position = Vector2(874, 420)
+scale = Vector2(0.4, 0.4)
