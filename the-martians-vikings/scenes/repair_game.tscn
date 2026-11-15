@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8gk0clpyinw"]
+
+[ext_resource type="Script" uid="uid://dfioasy5e5o7w" path="res://scripts/repair_game.gd" id="1_uelxo"]
+
+[node name="repair game" type="Node2D" unique_id=2072811366]
+script = ExtResource("1_uelxo")
