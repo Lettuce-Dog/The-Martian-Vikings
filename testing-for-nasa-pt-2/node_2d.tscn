@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ismrrsyd311n"]
+
+[ext_resource type="Script" uid="uid://cn50m0msw7u6r" path="res://new_script.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://m78401pr87lx" path="res://assests/solarpanelpixelpng.png" id="1_wtcfe"]
+
+[node name="solar panel minigame" type="Node2D" unique_id=41479752]
+script = ExtResource("1_0e48y")
+panel_texture = ExtResource("1_wtcfe")
