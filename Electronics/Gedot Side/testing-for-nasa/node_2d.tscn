@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://78wfda2hq6dq"]
+[gd_scene format=3 uid="uid://78wfda2hq6dq"]
 
 [ext_resource type="Texture2D" uid="uid://cs8umf6bx2tsn" path="res://icon.svg" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://cwep5oh1th0nl" path="res://Assests/bj8sWU (1).png" id="1_epypp"]
 [ext_resource type="Script" uid="uid://c6gtgj4dn0jr1" path="res://sprite_2d.gd" id="2_epypp"]
+[ext_resource type="Texture2D" uid="uid://dx3y1l810ro1u" path="res://Assests/bunker building.png" id="4_0hol4"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=696638491]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="." unique_id=700847866]
+position = Vector2(575, 400)
+scale = Vector2(3.5828128, 2.6437502)
+texture = ExtResource("1_epypp")
+
+[node name="Astronaut" type="Sprite2D" parent="." unique_id=160477111]
 position = Vector2(629.65, 334)
 texture = ExtResource("1_0e48y")
 script = ExtResource("2_epypp")
+
+[node name="Bunker" type="Sprite2D" parent="." unique_id=1823774832]
+position = Vector2(615, 541)
+scale = Vector2(1.2941391, 1.3828125)
+texture = ExtResource("4_0hol4")
