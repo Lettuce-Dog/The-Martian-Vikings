@@ -97,9 +97,9 @@ func create_interface() -> void:
 
 	# Restart button.
 	var restart_button := Button.new()
-	restart_button.text = "RESTART"
+	restart_button.text = "CLOSE"
 	restart_button.custom_minimum_size = Vector2(150, 45)
-	restart_button.pressed.connect(restart_game)
+	restart_button.pressed.connect(end_minigame)
 	main.add_child(restart_button)
 
 
@@ -233,5 +233,9 @@ func restart_game() -> void:
 
 	repairs_remaining = MAX_REPAIRS
 	game_finished = false
-
+	
 	update_interface()
+
+func end_minigame(won: bool):
+	shelter_repaired.emit(won)
+	queue_free()

@@ -56,3 +56,11 @@ func _physics_process(_delta: float) -> void:
 		sprite.play("walk")
 	else:
 		sprite.play("idle")
+		
+
+# Integration Stuff
+signal finished(won: bool)
+
+func end_minigame(won: bool):
+	finished.emit(won)
+	queue_free()

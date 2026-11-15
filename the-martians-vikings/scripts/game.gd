@@ -6,6 +6,31 @@ const API_KEY := "zrWQHBbfmzBRMhmMHGtwBNrDLD9FtLB9pHNtJfrn"
 var wind_speeds: Dictionary
 var temperatures: Dictionary
 
+# Pre-load minigames
+const repair_game = preload("res://scenes/repair_game.tscn")
+
+func start_repair_minigame():
+	var mg = repair_game.instantiate()
+	mg.shelter_repaired.connect(_on_minigame_finished)
+	get_tree().root.add_child(mg)
+	# freeze and hide the level
+	process_mode = Node.PROCESS_MODE_DISABLED
+	visible = false
+
+func _on_minigame_finished(won: bool):
+	process_mode = Node.PROCESS_MODE_INHERIT
+	visible = true
+	if won:
+		print("Player won the minigame!")
+
+func _on_option_selected(index: int, text: String) -> void:
+	match index:
+		0:
+			print("First option chosen")
+			start_repair_minigame()
+		1:
+			print("Second option chosen")
+			# e.g. nothing happens
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +43,7 @@ func _ready() -> void:
 	print(wind_speeds)
 	print(temperatures)
 	
-	
+	$PopupArea.option_selected.connect(_on_option_selected)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
