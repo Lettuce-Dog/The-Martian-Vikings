@@ -8,10 +8,19 @@ var temperatures: Dictionary
 
 # Pre-load minigames
 const repair_game = preload("res://scenes/repair_game.tscn")
+const panel_game = preload("res://scenes/solar_panel_game.tscn")
 
 func start_repair_minigame():
 	var mg = repair_game.instantiate()
 	mg.shelter_repaired.connect(_on_minigame_finished)
+	get_tree().root.add_child(mg)
+	# freeze and hide the level
+	process_mode = Node.PROCESS_MODE_DISABLED
+	visible = false
+	
+func start_panel_minigame():
+	var mg = panel_game.instantiate()
+	mg.cleaned.connect(_on_minigame_finished)
 	get_tree().root.add_child(mg)
 	# freeze and hide the level
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -23,11 +32,20 @@ func _on_minigame_finished(won: bool):
 	if won:
 		print("Player won the minigame!")
 
-func _on_option_selected(index: int, text: String) -> void:
+func _on_repair_selected(index: int, text: String) -> void:
 	match index:
 		0:
 			print("First option chosen")
 			start_repair_minigame()
+		1:
+			print("Second option chosen")
+			# e.g. nothing happens
+
+func _on_panel_selected(index: int, text: String) -> void:
+	match index:
+		0:
+			print("First option chosen")
+			start_panel_minigame()
 		1:
 			print("Second option chosen")
 			# e.g. nothing happens
@@ -43,8 +61,8 @@ func _ready() -> void:
 	print(wind_speeds)
 	print(temperatures)
 	
-	$PopupArea.option_selected.connect(_on_option_selected)
-
+	$PopupArea.option_selected.connect(_on_repair_selected)
+	$PopupArea2.option_selected.connect(_on_panel_selected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -36,5 +36,9 @@ position = Vector2(874, 420)
 scale = Vector2(0.4, 0.4)
 
 [node name="PopupArea" parent="." unique_id=892248755 instance=ExtResource("5_iywne")]
-position = Vector2(874, 474)
+position = Vector2(488, 535)
 title = "Start Minigame?"
+
+[node name="PopupArea2" parent="." unique_id=1112788045 instance=ExtResource("5_iywne")]
+position = Vector2(862, 468)
+title = "Clean Solar Panels?"
